@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:movies_app/domain/entities/app_error.dart';
 import 'package:movies_app/domain/entities/movie_entity.dart';
 
-abstract class MovieRepository {
+abstract class MoviesRepository {
   Future<Either<AppError, List<MovieEntity>>> getTrending();
   Future<Either<AppError, List<MovieEntity>>> getPopular();
   Future<Either<AppError, List<MovieEntity>>> getPlayingNow();

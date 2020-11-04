@@ -6,10 +6,10 @@ import 'package:movies_app/domain/entities/app_error.dart';
 import 'package:movies_app/domain/entities/movie_entity.dart';
 import 'package:movies_app/domain/repositories/movie_repository.dart';
 
-class MovieRepositoryImpl extends MovieRepository {
+class MoviesRepositoryImpl extends MoviesRepository {
   final MoviesDataSource moviesDataSource;
 
-  MovieRepositoryImpl(this.moviesDataSource);
+  MoviesRepositoryImpl(this.moviesDataSource);
 
   @override
   Future<Either<AppError, List<MovieModel>>> getTrending() async {

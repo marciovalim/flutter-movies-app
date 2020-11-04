@@ -81,6 +81,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  get_it:
+    dependency: "direct main"
+    description:
+      name: get_it
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.1"
   http:
     dependency: "direct main"
     description:
@@ -117,7 +124,7 @@ packages:
     source: hosted
     version: "1.8.0-nullsafety.1"
   pedantic:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: pedantic
       url: "https://pub.dartlang.org"

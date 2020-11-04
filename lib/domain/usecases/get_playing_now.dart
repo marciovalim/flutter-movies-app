@@ -7,7 +7,7 @@ import 'package:movies_app/domain/repositories/movie_repository.dart';
 import 'package:movies_app/domain/usecases/usecase.dart';
 
 class GetPlayingNow extends Usecase<List<MovieEntity>, NoParams> {
-  final MovieRepository movieRepository;
+  final MoviesRepository movieRepository;
 
   GetPlayingNow(this.movieRepository);
 

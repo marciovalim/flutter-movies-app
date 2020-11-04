@@ -6,7 +6,7 @@ import 'package:movies_app/domain/repositories/movie_repository.dart';
 import 'package:movies_app/domain/usecases/usecase.dart';
 
 class GetTrending extends Usecase<List<MovieEntity>, NoParams> {
-  final MovieRepository movieRepository;
+  final MoviesRepository movieRepository;
 
   GetTrending(this.movieRepository);
 

@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
-import 'package:movies_app/data/core/api_client.dart';
-import 'package:movies_app/data/data_sources/movies_remote_data_source.dart';
-import 'package:movies_app/data/repositories/movie_repository_impl.dart';
+import 'package:movies_app/depen_injec/get_it.dart' as getIt;
 import 'package:movies_app/domain/entities/no_params.dart';
-import 'package:movies_app/domain/repositories/movie_repository.dart';
-import 'package:movies_app/domain/usecases/get_coming_soon.dart';
-import 'package:movies_app/domain/usecases/get_playing_now.dart';
-import 'package:movies_app/domain/usecases/get_popular.dart';
 import 'package:movies_app/domain/usecases/get_trending.dart';
+import 'package:pedantic/pedantic.dart';
 
 void main() async {
-  final apiClient = ApiClient(Client());
-  MoviesDataSource moviesDataSource = MoviesDataSourceImpl(apiClient);
-  MovieRepository movieRepository = MovieRepositoryImpl(moviesDataSource);
-  final getTrending = GetTrending(movieRepository);
-  final getPopular = GetPopular(movieRepository);
-  final getPlayingNow = GetPlayingNow(movieRepository);
-  final getComingSoon = GetComingSoon(movieRepository);
-  final eitherResponse = await getTrending.call(NoParams());
+  unawaited(getIt.initGetIt());
+  final eitherResponse = await getIt.getIt<GetTrending>().call(NoParams());
+  eitherResponse.fold(
+    (l) => print('error'),
+    (r) => print('success'),
+  );
   runApp(MyApp());
 }
 
