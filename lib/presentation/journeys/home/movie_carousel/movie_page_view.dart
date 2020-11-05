@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:responsive_size/responsive_size.dart';
 
+import 'package:movies_app/common/utils/math_utils.dart';
+import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movies_app/common/constants/size_constants.dart';
 import 'package:movies_app/domain/entities/movie_entity.dart';
-
-import 'animated_movie_card_widget.dart';
+import './animated_movie_card_widget.dart';
 
 class MoviePageView extends StatefulWidget {
   final List<MovieEntity> movies;
@@ -29,7 +29,7 @@ class _MoviePageViewState extends State<MoviePageView> {
   void initState() {
     super.initState();
     _pageController = PageController(
-      initialPage: widget.initialIndex,
+      initialPage: widget.movies.length * 100,
       keepPage: false,
       viewportFraction: 0.7,
     );
@@ -50,15 +50,18 @@ class _MoviePageViewState extends State<MoviePageView> {
         pageSnapping: true,
         controller: _pageController,
         scrollDirection: Axis.horizontal,
-        itemCount: widget.movies?.length ?? 0,
-        onPageChanged: (index) {
-          BlocProvider.of<MovieBackdropBloc>(context)
-              .add(MovieBackdropChangedEvent(widget.movies[index]));
+        onPageChanged: (pageIndex) {
+          final moviesIndex = loopIndex(pageIndex);
+          BlocProvider.of<MovieBackdropBloc>(context).add(
+            MovieBackdropChangedEvent(
+              widget.movies[moviesIndex],
+            ),
+          );
         },
-        itemBuilder: (context, index) {
-          final movie = widget.movies[index];
+        itemBuilder: (context, pageIndex) {
+          final movie = widget.movies[loopIndex(pageIndex)];
           return AnimatedMovieCardWidget(
-            index: index,
+            index: pageIndex,
             pageController: _pageController,
             movieId: movie.id,
             posterPath: movie.posterPath,
@@ -66,5 +69,9 @@ class _MoviePageViewState extends State<MoviePageView> {
         },
       ),
     );
+  }
+
+  int loopIndex(int index) {
+    return index.loop(widget.movies.length);
   }
 }
