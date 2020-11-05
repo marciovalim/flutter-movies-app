@@ -43,7 +43,7 @@ class MovieModel extends MovieEntity {
       video: json['video'],
       voteCount: json['vote_count'],
       voteAverage: json['vote_average']?.toDouble() ?? 0.0,
-      title: json['title'],
+      title: json['title'] ?? '',
       releaseDate: json['release_date'],
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'],

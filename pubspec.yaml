@@ -23,15 +23,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  equatable: ^1.2.5
-  http: ^0.12.2
-  dartz: ^0.9.2
-  get_it: ^5.0.1
-  pedantic: ^1.9.2
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  responsive_size:
+    git:
+      url: git://github.com/marciovalim/flutter-responsive-size.git
+  cached_network_image: ^2.3.2
   cupertino_icons: ^1.0.0
+  dartz: ^0.9.2
+  equatable: ^1.2.5
+  flutter_bloc: ^6.0.6
+  flutter_svg: ^0.19.1
+  get_it: ^5.0.1
+  google_fonts: ^1.1.1
+  http: ^0.12.2
+  pedantic: ^1.9.2
 
 dev_dependencies:
   flutter_test:
@@ -39,7 +43,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
   # The following line ensures that the Material Icons font is
@@ -48,15 +51,12 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/pngs
-    - assets/svgs
-
+    - assets/pngs/
+    - assets/svgs/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
