@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_size/responsive_size.dart';
+import 'package:math_utils/math_utils.dart';
 
-import 'package:movies_app/common/utils/math_utils.dart';
 import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movies_app/common/constants/size_constants.dart';
 import 'package:movies_app/domain/entities/movie_entity.dart';
@@ -29,11 +29,13 @@ class _MoviePageViewState extends State<MoviePageView> {
   void initState() {
     super.initState();
     _pageController = PageController(
-      initialPage: widget.movies.length * 100,
+      initialPage: _getBigInitialNumber(),
       keepPage: false,
       viewportFraction: 0.7,
     );
   }
+
+  int _getBigInitialNumber() => widget.movies.length * 500;
 
   @override
   void dispose() {
