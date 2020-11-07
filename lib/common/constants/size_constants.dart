@@ -24,4 +24,5 @@ class Sizes {
   static const double s150 = 150;
   static const double s200 = 200;
   static const double s230 = 230;
+  static const double s300 = 300;
 }

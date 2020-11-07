@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:responsive_size/responsive_size.dart';
 
-class Logo extends StatelessWidget {
+class AppLogo extends StatelessWidget {
   final double height;
 
-  const Logo({
+  const AppLogo({
     Key key,
     @required this.height,
   })  : assert(height != null, 'height should not be null'),

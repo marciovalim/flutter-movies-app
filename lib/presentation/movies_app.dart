@@ -15,6 +15,7 @@ class MoviesApp extends StatelessWidget {
       title: 'Movies App',
       theme: ThemeData(
         primaryColor: AppColors.vulcan,
+        accentColor: AppColors.royalBlue,
         scaffoldBackgroundColor: AppColors.vulcan,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: const AppBarTheme(elevation: 0),
