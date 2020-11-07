@@ -15,25 +15,23 @@ class MoviesTabbedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: Sizes.s6.h,
-        ),
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemCount: movies.length ?? 0,
-          scrollDirection: Axis.horizontal,
-          separatorBuilder: (_, index) {
-            return SizedBox(width: Sizes.s14.w);
-          },
-          itemBuilder: (_, index) {
-            return MovieTabbedCardWidget(
-              title: movies[index].title,
-              posterPath: movies[index].posterPath,
-            );
-          },
-        ),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: Sizes.s6.h,
+      ),
+      child: ListView.separated(
+        shrinkWrap: true,
+        itemCount: movies.length ?? 0,
+        scrollDirection: Axis.horizontal,
+        separatorBuilder: (_, index) {
+          return SizedBox(width: Sizes.s14.w);
+        },
+        itemBuilder: (_, index) {
+          return MovieTabbedCardWidget(
+            title: movies[index].title,
+            posterPath: movies[index].posterPath,
+          );
+        },
       ),
     );
   }

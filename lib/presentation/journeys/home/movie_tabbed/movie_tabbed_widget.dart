@@ -45,9 +45,14 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget> {
                 }).toList(),
               ),
               if (state is MovieTabbedChanged)
-                MoviesTabbedList(
-                  movies: state.movies,
-                  key: ValueKey(state.currentIndex),
+                Expanded(
+                  child: AnimatedSwitcher(
+                    duration: Duration(milliseconds: 400),
+                    child: MoviesTabbedList(
+                      movies: state.movies,
+                      key: ValueKey(state.currentIndex),
+                    ),
+                  ),
                 ),
             ],
           );
