@@ -31,7 +31,8 @@ dependencies:
   dartz: ^0.9.2
   equatable: ^1.2.5
   math_utils: ^1.0.0
-  flutter_bloc: ^6.0.6
+  flutter_bloc: ^6.1.0
+  truncate: ^2.1.2
   flutter_svg: ^0.19.1
   get_it: ^5.0.1
   google_fonts: ^1.1.1

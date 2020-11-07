@@ -39,8 +39,6 @@ class MoviesDataSourceImpl extends MoviesDataSource {
   }
 
   List<MovieModel> _parseDecodedResponse(dynamic decodedResponse) {
-    final movies = MoviesResponseModel.fromJson(decodedResponse).movies;
-    print(movies);
-    return movies;
+    return MoviesResponseModel.fromJson(decodedResponse).movies;
   }
 }

@@ -124,7 +124,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.6"
+    version: "6.1.0"
   flutter_blurhash:
     dependency: transitive
     description:
@@ -403,6 +403,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.19-nullsafety.2"
+  truncate:
+    dependency: "direct main"
+    description:
+      name: truncate
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.2"
   typed_data:
     dependency: transitive
     description:

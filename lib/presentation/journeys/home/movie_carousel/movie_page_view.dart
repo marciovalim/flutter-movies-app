@@ -35,7 +35,7 @@ class _MoviePageViewState extends State<MoviePageView> {
     );
   }
 
-  int _getBigInitialNumber() => widget.movies.length * 500;
+  int _getBigInitialNumber() => widget.movies.length * 1e6.toInt();
 
   @override
   void dispose() {
