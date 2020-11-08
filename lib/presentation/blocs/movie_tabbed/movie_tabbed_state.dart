@@ -3,13 +3,15 @@ part of 'movie_tabbed_bloc.dart';
 abstract class MovieTabbedState extends Equatable {
   final int currentIndex;
 
-  const MovieTabbedState({this.currentIndex});
+  const MovieTabbedState(this.currentIndex);
 
   @override
   List<Object> get props => [currentIndex];
 }
 
-class MovieTabbedInitial extends MovieTabbedState {}
+class MovieTabbedInitial extends MovieTabbedState {
+  const MovieTabbedInitial(int currentIndex) : super(currentIndex);
+}
 
 class MovieTabbedChanged extends MovieTabbedState {
   final List<MovieEntity> movies;
@@ -17,10 +19,12 @@ class MovieTabbedChanged extends MovieTabbedState {
   const MovieTabbedChanged({
     @required this.movies,
     @required int currentIndex,
-  }) : super(currentIndex: currentIndex);
+  }) : super(currentIndex);
 
   @override
   List<Object> get props => [movies, currentIndex];
 }
 
-class MovieTabbedLoadError extends MovieTabbedState {}
+class MovieTabbedLoadError extends MovieTabbedState {
+  MovieTabbedLoadError() : super(0);
+}

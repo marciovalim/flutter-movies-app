@@ -24,28 +24,14 @@ class MovieTabbedBloc extends Bloc<MovieTabbedEvent, MovieTabbedState> {
     @required this.getPopular,
     @required this.getPlayinNow,
     @required this.getComingSoon,
-  }) : super(MovieTabbedInitial());
+  }) : super(MovieTabbedInitial(0));
 
   @override
   Stream<MovieTabbedState> mapEventToState(
     MovieTabbedEvent event,
   ) async* {
     if (event is MovieTabbedChangeEvent) {
-      Either<AppError, List<MovieEntity>> eitherMovies;
-      switch (event.currentIndex) {
-        case 0:
-          eitherMovies = await getPopular(NoParams());
-          break;
-        case 1:
-          eitherMovies = await getPlayinNow(NoParams());
-          break;
-        case 2:
-          eitherMovies = await getComingSoon(NoParams());
-          break;
-        default:
-          throw UnimplementedError(
-              'movie tab ${event.currentIndex} is not implemented');
-      }
+      final eitherMovies = await _getEitherMovies(event.currentIndex);
       yield eitherMovies.fold(
         (appError) => MovieTabbedLoadError(),
         (movies) => MovieTabbedChanged(
@@ -53,6 +39,24 @@ class MovieTabbedBloc extends Bloc<MovieTabbedEvent, MovieTabbedState> {
           currentIndex: event.currentIndex,
         ),
       );
+    }
+  }
+
+  Future<Either<AppError, List<MovieEntity>>> _getEitherMovies(
+    int tabIndex,
+  ) async {
+    switch (tabIndex) {
+      case 0:
+        return await getPopular(NoParams());
+        break;
+      case 1:
+        return await getPlayinNow(NoParams());
+        break;
+      case 2:
+        return await getComingSoon(NoParams());
+        break;
+      default:
+        throw UnimplementedError('movie tab $tabIndex is not implemented');
     }
   }
 }

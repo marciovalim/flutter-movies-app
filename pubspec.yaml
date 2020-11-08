@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^1.1.1
   http: ^0.12.2
   pedantic: ^1.9.2
+  flutter_translation: ^0.0.6
   flutter_localizations:
     sdk: flutter
 
@@ -45,19 +46,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-# The following section is specific to Flutter.
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   assets:
     - assets/pngs/
     - assets/svgs/
-    - assets/languages/
 
   # fonts:
   #   - family: Schyler
@@ -70,6 +64,3 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages

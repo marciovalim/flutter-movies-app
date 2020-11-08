@@ -3,14 +3,18 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/common/constants/languages.dart';
+
+import 'package:flutter_translation/flutter_translation.dart';
+import 'package:movies_app/common/app_translations/app_languages.dart';
+import 'package:movies_app/depen_injec/get_it.dart';
 
 part 'language_event.dart';
 part 'language_state.dart';
 
 class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
   LanguageBloc()
-      : super(LanguageLoadedState(Languages.defaultLanguage.toLocale()));
+      : super(LanguageLoadedState(
+            getIt<AppLanguages>().defaultLanguage.toLocale()));
 
   @override
   Stream<LanguageState> mapEventToState(
@@ -18,7 +22,7 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
   ) async* {
     if (event is LanguageChangeEvent) {
       yield LanguageLoadedState(
-          Languages.findByCode(event.languageCode).toLocale());
+          getIt<AppLanguages>().findByCode(event.languageCode).toLocale());
     }
   }
 }

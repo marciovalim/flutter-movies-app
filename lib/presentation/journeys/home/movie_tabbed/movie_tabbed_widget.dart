@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/common/app_translations/app_translator.dart';
+import 'package:movies_app/depen_injec/get_it.dart';
 import 'package:responsive_size/responsive_size.dart';
 
-import 'package:movies_app/common/extensions/string_translation_extension.dart';
 import 'package:movies_app/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
 import 'package:movies_app/presentation/journeys/home/movie_tabbed/movies_tabbed_list.dart';
 import 'package:movies_app/common/constants/size_constants.dart';
@@ -23,7 +24,12 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget> {
   @override
   void initState() {
     super.initState();
-    _changeTabIndex(MovieTabbedConstants.movieTabs.first.index);
+    _waitAndselectFirstTab();
+  }
+
+  void _waitAndselectFirstTab() async {
+    await Future.delayed(Duration.zero);
+    return _changeTabIndex(0);
   }
 
   @override
@@ -37,9 +43,11 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: MovieTabbedConstants.movieTabs.map((movieTab) {
+                children: MovieTabs.getMovieTabs(
+                  getIt.get<AppTranslator>(param1: context),
+                ).map((movieTab) {
                   return TabTitleWidget(
-                    title: movieTab.title.translate(context),
+                    title: movieTab.title,
                     onPressed: () => _changeTabIndex(movieTab.index),
                     isSelected: state.currentIndex == movieTab.index,
                   );

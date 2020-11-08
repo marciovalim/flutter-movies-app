@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:movies_app/common/constants/languages.dart';
-import 'package:movies_app/depen_injec/get_it.dart';
-import 'package:movies_app/presentation/app_localizations.dart';
-import 'package:movies_app/presentation/blocs/language_bloc/language_bloc.dart';
+import 'package:flutter_translation/flutter_translation.dart';
 
+import 'package:movies_app/common/app_translations/app_languages.dart';
+import 'package:movies_app/depen_injec/get_it.dart';
+import 'package:movies_app/common/app_translations/app_localizations.dart';
+import 'package:movies_app/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:movies_app/presentation/themes/app_colors.dart';
 import 'package:movies_app/presentation/themes/text_themes.dart';
-
-import 'journeys/home/home_screen.dart';
+import './journeys/home/home_screen.dart';
 
 class MoviesApp extends StatefulWidget {
   const MoviesApp({Key key}) : super(key: key);
@@ -52,11 +52,12 @@ class _MoviesAppState extends State<MoviesApp> {
                 appBarTheme: const AppBarTheme(elevation: 0),
                 textTheme: TextThemes.getTextTheme(),
               ),
-              supportedLocales:
-                  Languages.languages.map((lang) => lang.toLocale()),
+              supportedLocales: getIt<AppLanguages>()
+                  .languages
+                  .map((lang) => lang.toLocale()),
               locale: state.locale,
               localizationsDelegates: [
-                AppLocalizations.delegate,
+                AppLocalizationsDelegate(),
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],

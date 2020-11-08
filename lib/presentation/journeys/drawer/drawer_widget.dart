@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/common/constants/languages.dart';
-import 'package:movies_app/common/constants/translation_keys.dart';
-import 'package:movies_app/presentation/blocs/language_bloc/language_bloc.dart';
+import 'package:movies_app/common/app_translations/app_languages.dart';
+import 'package:movies_app/common/app_translations/app_translator.dart';
+import 'package:movies_app/depen_injec/get_it.dart';
 import 'package:responsive_size/responsive_size.dart';
 
+import 'package:movies_app/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:movies_app/presentation/journeys/drawer/drawer_tile_widget.dart';
 import 'package:movies_app/presentation/journeys/drawer/drawer_tile_expansion_widget.dart';
 import 'package:movies_app/presentation/widgets/logo.dart';
@@ -39,16 +40,16 @@ class DrawerWidget extends StatelessWidget {
               child: AppLogo(height: Sizes.s20.h),
             ),
             DrawerTileWidget(
-              title: TranslationKeys.favoriteMovies.translate(context),
+              title: getIt.get<AppTranslator>(param1: context).favoriteMovies,
               onPressed: () {},
             ),
             BlocBuilder<LanguageBloc, LanguageState>(
               builder: (context, state) {
                 return DrawerTileExpansionWidget(
-                  initialSelectedIndex:
-                      Languages.indexWhere(state.locale.languageCode),
-                  title: TranslationKeys.language.translate(context),
-                  nestedTiles: Languages.languages.map((lang) {
+                  initialSelectedIndex: getIt<AppLanguages>()
+                      .indexByCode(state.locale.languageCode),
+                  title: getIt.get<AppTranslator>(param1: context).languages,
+                  nestedTiles: getIt<AppLanguages>().languages.map((lang) {
                     return DrawerNestedTile(
                       title: lang.name,
                       onPressed: () => _changeLanguage(context, lang.code),
@@ -58,11 +59,11 @@ class DrawerWidget extends StatelessWidget {
               },
             ),
             DrawerTileWidget(
-              title: TranslationKeys.feedback.translate(context),
+              title: getIt.get<AppTranslator>(param1: context).feedback,
               onPressed: () {},
             ),
             DrawerTileWidget(
-              title: TranslationKeys.about.translate(context),
+              title: getIt.get<AppTranslator>(param1: context).about,
               onPressed: () {},
             ),
           ],
