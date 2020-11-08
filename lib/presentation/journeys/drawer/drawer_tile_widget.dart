@@ -4,11 +4,13 @@ import 'package:movies_app/presentation/journeys/drawer/drawer_tile_container_wi
 class DrawerTileWidget extends StatelessWidget {
   final String title;
   final Function onPressed;
+  final Color overrideColor;
 
   const DrawerTileWidget({
     Key key,
     @required this.title,
     @required this.onPressed,
+    this.overrideColor,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,10 @@ class DrawerTileWidget extends StatelessWidget {
         child: ListTile(
           title: Text(
             title,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.subtitle1.copyWith(
+                  color: overrideColor ??
+                      Theme.of(context).textTheme.subtitle1.color,
+                ),
           ),
         ),
       ),

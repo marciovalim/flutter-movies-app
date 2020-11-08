@@ -43,9 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const DrawerWidget(),
       body: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => _movieCarouselBloc),
-          BlocProvider(create: (_) => _movieBackdropBloc),
-          BlocProvider(create: (_) => _movieTabbedBloc),
+          BlocProvider.value(value: _movieCarouselBloc),
+          BlocProvider.value(value: _movieBackdropBloc),
+          BlocProvider.value(value: _movieTabbedBloc),
         ],
         child: BlocBuilder<MovieCarouselBloc, MovieCarouselState>(
           builder: (_, state) {

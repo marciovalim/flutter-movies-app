@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class DrawerTileContainerWidget extends StatelessWidget {
   final Widget child;
+  final Color overrideColor;
 
   const DrawerTileContainerWidget({
     Key key,
     this.child,
+    this.overrideColor,
   }) : super(key: key);
 
   @override
@@ -14,7 +16,8 @@ class DrawerTileContainerWidget extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).primaryColor.withOpacity(0.7),
+            color: overrideColor ??
+                Theme.of(context).primaryColor.withOpacity(0.7),
             blurRadius: 2,
           ),
         ],

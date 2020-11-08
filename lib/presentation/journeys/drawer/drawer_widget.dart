@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/common/constants/languages.dart';
 import 'package:movies_app/common/constants/translation_keys.dart';
+import 'package:movies_app/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:responsive_size/responsive_size.dart';
 
 import 'package:movies_app/presentation/journeys/drawer/drawer_tile_widget.dart';
@@ -39,18 +42,20 @@ class DrawerWidget extends StatelessWidget {
               title: TranslationKeys.favoriteMovies.translate(context),
               onPressed: () {},
             ),
-            DrawerTileExpansionWidget(
-              title: TranslationKeys.language.translate(context),
-              nestedTiles: [
-                DrawerNestedTile(
-                  title: 'English',
-                  onPressed: () {},
-                ),
-                DrawerNestedTile(
-                  title: 'Português',
-                  onPressed: () {},
-                ),
-              ],
+            BlocBuilder<LanguageBloc, LanguageState>(
+              builder: (context, state) {
+                return DrawerTileExpansionWidget(
+                  initialSelectedIndex:
+                      Languages.indexWhere(state.locale.languageCode),
+                  title: TranslationKeys.language.translate(context),
+                  nestedTiles: Languages.languages.map((lang) {
+                    return DrawerNestedTile(
+                      title: lang.name,
+                      onPressed: () => _changeLanguage(context, lang.code),
+                    );
+                  }).toList(),
+                );
+              },
             ),
             DrawerTileWidget(
               title: TranslationKeys.feedback.translate(context),
@@ -64,5 +69,10 @@ class DrawerWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _changeLanguage(BuildContext context, String languageCode) {
+    BlocProvider.of<LanguageBloc>(context)
+        .add(LanguageChangeEvent(languageCode));
   }
 }
