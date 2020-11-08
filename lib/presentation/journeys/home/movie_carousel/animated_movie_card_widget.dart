@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_card_widget.dart';
 
 class AnimatedMovieCardWidget extends StatelessWidget {
+  final int initialIndex;
   final int index;
   final int movieId;
   final String posterPath;
@@ -14,6 +15,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
     @required this.movieId,
     @required this.posterPath,
     @required this.pageController,
+    @required this.initialIndex,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
           );
         }
         return _MovieCardAnimation(
-          animationValue: index == 0 ? 1 : 0.9,
+          animationValue: index == initialIndex ? 1 : 0.9,
           child: child,
         );
       },

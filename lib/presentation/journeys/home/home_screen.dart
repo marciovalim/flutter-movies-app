@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _movieCarouselBloc = getIt<MovieCarouselBloc>();
     _movieBackdropBloc = _movieCarouselBloc.movieBackdropBloc;
     _movieTabbedBloc = getIt<MovieTabbedBloc>();
-    _movieCarouselBloc.add(MovieCarouselLoadEvent(initialIndex: 0));
+    _movieCarouselBloc.add(MovieCarouselLoadEvent());
   }
 
   @override
@@ -57,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.topCenter,
                     heightFactor: 0.6,
                     child: MovieCarouselWidget(
-                      initialIndex: state.initialIndex,
                       movies: state.movies,
                     ),
                   ),

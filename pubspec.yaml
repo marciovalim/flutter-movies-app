@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^1.1.1
   http: ^0.12.2
   pedantic: ^1.9.2
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -55,15 +57,8 @@ flutter:
   assets:
     - assets/pngs/
     - assets/svgs/
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+    - assets/languages/
+
   # fonts:
   #   - family: Schyler
   #     fonts:

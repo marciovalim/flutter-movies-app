@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/common/constants/translation_keys.dart';
 import 'package:responsive_size/responsive_size.dart';
 
 import 'package:movies_app/presentation/journeys/drawer/drawer_tile_widget.dart';
@@ -35,11 +36,11 @@ class DrawerWidget extends StatelessWidget {
               child: AppLogo(height: Sizes.s20.h),
             ),
             DrawerTileWidget(
-              title: 'Favorite Movies',
+              title: TranslationKeys.favoriteMovies.translate(context),
               onPressed: () {},
             ),
             DrawerTileExpansionWidget(
-              title: 'Language',
+              title: TranslationKeys.language.translate(context),
               nestedTiles: [
                 DrawerNestedTile(
                   title: 'English',
@@ -52,11 +53,11 @@ class DrawerWidget extends StatelessWidget {
               ],
             ),
             DrawerTileWidget(
-              title: 'Feedback',
+              title: TranslationKeys.feedback.translate(context),
               onPressed: () {},
             ),
             DrawerTileWidget(
-              title: 'About',
+              title: TranslationKeys.about.translate(context),
               onPressed: () {},
             ),
           ],

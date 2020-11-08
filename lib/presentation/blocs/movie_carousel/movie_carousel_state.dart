@@ -10,16 +10,14 @@ abstract class MovieCarouselState extends Equatable {
 class MovieCarouselInitial extends MovieCarouselState {}
 
 class MovieCarouselLoaded extends MovieCarouselState {
-  final int initialIndex;
   final List<MovieEntity> movies;
 
   const MovieCarouselLoaded({
     @required this.movies,
-    @required this.initialIndex,
   });
 
   @override
-  List<Object> get props => [initialIndex, movies];
+  List<Object> get props => [movies];
 }
 
 class MovieCarouselError extends MovieCarouselState {}

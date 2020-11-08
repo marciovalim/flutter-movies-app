@@ -30,11 +30,9 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
       yield eitherMovies.fold(
         (error) => MovieCarouselError(),
         (movies) {
-          movieBackdropBloc
-              .add(MovieBackdropChangedEvent(movies[event.initialIndex]));
+          movieBackdropBloc.add(MovieBackdropChangedEvent(movies.first));
           return MovieCarouselLoaded(
             movies: movies,
-            initialIndex: event.initialIndex,
           );
         },
       );

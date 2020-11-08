@@ -10,12 +10,10 @@ import './animated_movie_card_widget.dart';
 
 class MoviePageView extends StatefulWidget {
   final List<MovieEntity> movies;
-  final int initialIndex;
 
   const MoviePageView({
     Key key,
     @required this.movies,
-    @required this.initialIndex,
   }) : super(key: key);
 
   @override
@@ -24,18 +22,18 @@ class MoviePageView extends StatefulWidget {
 
 class _MoviePageViewState extends State<MoviePageView> {
   PageController _pageController;
+  int _initialIndex;
 
   @override
   void initState() {
     super.initState();
+    _initialIndex = widget.movies.length * 1e6.toInt();
     _pageController = PageController(
-      initialPage: _getBigInitialNumber(),
+      initialPage: _initialIndex,
       keepPage: false,
       viewportFraction: 0.7,
     );
   }
-
-  int _getBigInitialNumber() => widget.movies.length * 1e6.toInt();
 
   @override
   void dispose() {
@@ -64,6 +62,7 @@ class _MoviePageViewState extends State<MoviePageView> {
           final movie = widget.movies[loopIndex(pageIndex)];
           return AnimatedMovieCardWidget(
             index: pageIndex,
+            initialIndex: _initialIndex,
             pageController: _pageController,
             movieId: movie.id,
             posterPath: movie.posterPath,

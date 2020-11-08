@@ -7,15 +7,12 @@ import 'package:movies_app/presentation/widgets/movie_app_bar.dart';
 import 'package:movies_app/presentation/widgets/separator.dart';
 
 class MovieCarouselWidget extends StatelessWidget {
-  final int initialIndex;
   final List<MovieEntity> movies;
 
   const MovieCarouselWidget({
     Key key,
-    @required this.initialIndex,
     @required this.movies,
-  })  : assert(initialIndex >= 0, 'initialIndex should be greater than zero'),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,7 @@ class MovieCarouselWidget extends StatelessWidget {
         Column(
           children: [
             MovieAppBar(),
-            MoviePageView(movies: movies, initialIndex: initialIndex),
+            MoviePageView(movies: movies),
             MovieTitleWidget(),
             Separator(),
           ],
