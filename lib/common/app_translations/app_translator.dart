@@ -10,4 +10,6 @@ abstract class AppTranslator extends ITranslator {
   String get languages;
   String get feedback;
   String get about;
+  String get aboutDescription;
+  String get okay;
 }

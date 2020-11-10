@@ -23,4 +23,11 @@ class EnTranslator extends AppTranslator {
 
   @override
   String get soon => 'Soon';
+
+  @override
+  String get aboutDescription =>
+      'This product uses the TMDb API but is not endorsed or certified by TMDb. This app is developed for education purpose.';
+
+  @override
+  String get okay => 'Okay';
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common/app_translations/app_languages.dart';
 import 'package:movies_app/common/app_translations/app_translator.dart';
 import 'package:movies_app/depen_injec/get_it.dart';
+import 'package:movies_app/presentation/widgets/app_about_dialog.dart';
 import 'package:responsive_size/responsive_size.dart';
 
 import 'package:movies_app/presentation/blocs/language_bloc/language_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:movies_app/presentation/journeys/drawer/drawer_tile_widget.dart'
 import 'package:movies_app/presentation/journeys/drawer/drawer_tile_expansion_widget.dart';
 import 'package:movies_app/presentation/widgets/logo.dart';
 import 'package:movies_app/common/constants/size_constants.dart';
+import 'package:wiredash/wiredash.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key key}) : super(key: key);
@@ -60,11 +62,19 @@ class DrawerWidget extends StatelessWidget {
             ),
             DrawerTileWidget(
               title: getIt.get<AppTranslator>(param1: context).feedback,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+                Wiredash.of(context).show();
+              },
             ),
             DrawerTileWidget(
               title: getIt.get<AppTranslator>(param1: context).about,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  child: AppAboutDialog(),
+                );
+              },
             ),
           ],
         ),

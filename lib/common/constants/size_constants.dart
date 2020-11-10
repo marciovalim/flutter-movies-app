@@ -20,6 +20,7 @@ class Sizes {
   static const double s80 = 80;
   static const double s100 = 100;
   static const double s110 = 110;
+  static const double s120 = 120;
   static const double s140 = 140;
   static const double s150 = 150;
   static const double s200 = 200;

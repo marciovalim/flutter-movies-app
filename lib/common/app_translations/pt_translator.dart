@@ -23,4 +23,11 @@ class PtTranslator extends AppTranslator {
 
   @override
   String get soon => 'Em Breve';
+
+  @override
+  String get aboutDescription =>
+      'Esse produto usa a TMDb API mas não é aprovado ou certificado pela TMDb. Esse aplicativo foi desenvolvido para fins educativos.';
+
+  @override
+  String get okay => 'Ok';
 }

@@ -11,12 +11,19 @@ class TextThemes {
   static getTextTheme() {
     return TextTheme(
       headline6: _whiteHeadLine6,
+      headline5: _whiteHeadline5,
       subtitle1: _whiteSubtitle1,
+      button: _whiteButtonText,
       bodyText2: _whiteBodyText2,
     );
   }
 
   static TextTheme get _poppinsTextTheme => GoogleFonts.poppinsTextTheme();
+
+  static TextStyle get _whiteButtonText => _poppinsTextTheme.button.copyWith(
+        fontSize: Sizes.s14.sp,
+        color: Colors.white,
+      );
 
   static TextStyle get _whiteSubtitle1 => _poppinsTextTheme.subtitle1.copyWith(
         color: Colors.white,
@@ -29,6 +36,11 @@ class TextThemes {
         wordSpacing: 0.25,
         letterSpacing: 0.25,
         height: 1.5,
+      );
+
+  static TextStyle get _whiteHeadline5 => _poppinsTextTheme.headline5.copyWith(
+        fontSize: Sizes.s20.sp,
+        color: Colors.white,
       );
 
   static TextStyle get _whiteHeadLine6 {

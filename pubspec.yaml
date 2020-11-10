@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   responsive_size:
     git:
       url: git://github.com/marciovalim/flutter-responsive-size.git
@@ -30,17 +32,16 @@ dependencies:
   cupertino_icons: ^1.0.0
   dartz: ^0.9.2
   equatable: ^1.2.5
-  math_utils: ^1.0.0
   flutter_bloc: ^6.1.0
-  truncate: ^2.1.2
   flutter_svg: ^0.19.1
+  flutter_translation: ^0.0.6
   get_it: ^5.0.1
   google_fonts: ^1.1.1
   http: ^0.12.2
+  math_utils: ^1.0.0
   pedantic: ^1.9.2
-  flutter_translation: ^0.0.6
-  flutter_localizations:
-    sdk: flutter
+  truncate: ^2.1.2
+  wiredash: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -52,7 +53,6 @@ flutter:
   assets:
     - assets/pngs/
     - assets/svgs/
-
   # fonts:
   #   - family: Schyler
   #     fonts:
