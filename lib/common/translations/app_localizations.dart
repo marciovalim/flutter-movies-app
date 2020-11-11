@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_translation/flutter_translation.dart';
+import 'package:movies_app/common/translations/app_languages.dart';
+import 'package:movies_app/common/translations/app_translator.dart';
 
-import 'package:movies_app/common/app_translations/app_translator.dart';
-import 'package:movies_app/common/app_translations/app_languages.dart';
 import 'package:movies_app/depen_injec/get_it.dart';
 
 class AppLocalizations extends ILocalizations<AppTranslator> {

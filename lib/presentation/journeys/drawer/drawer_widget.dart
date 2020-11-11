@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/common/app_translations/app_languages.dart';
-import 'package:movies_app/common/app_translations/app_translator.dart';
+import 'package:movies_app/common/translations/app_languages.dart';
+import 'package:movies_app/common/utils/find_translator.dart';
 import 'package:movies_app/depen_injec/get_it.dart';
 import 'package:movies_app/presentation/widgets/app_about_dialog.dart';
 import 'package:responsive_size/responsive_size.dart';
@@ -42,7 +42,7 @@ class DrawerWidget extends StatelessWidget {
               child: AppLogo(height: Sizes.s20.h),
             ),
             DrawerTileWidget(
-              title: getIt.get<AppTranslator>(param1: context).favoriteMovies,
+              title: Utils.findTranslator(context).favoriteMovies,
               onPressed: () {},
             ),
             BlocBuilder<LanguageBloc, LanguageState>(
@@ -50,7 +50,7 @@ class DrawerWidget extends StatelessWidget {
                 return DrawerTileExpansionWidget(
                   initialSelectedIndex: getIt<AppLanguages>()
                       .indexByCode(state.locale.languageCode),
-                  title: getIt.get<AppTranslator>(param1: context).languages,
+                  title: Utils.findTranslator(context).languages,
                   nestedTiles: getIt<AppLanguages>().languages.map((lang) {
                     return DrawerNestedTile(
                       title: lang.name,
@@ -61,14 +61,14 @@ class DrawerWidget extends StatelessWidget {
               },
             ),
             DrawerTileWidget(
-              title: getIt.get<AppTranslator>(param1: context).feedback,
+              title: Utils.findTranslator(context).feedback,
               onPressed: () {
                 Navigator.of(context).pop();
                 Wiredash.of(context).show();
               },
             ),
             DrawerTileWidget(
-              title: getIt.get<AppTranslator>(param1: context).about,
+              title: Utils.findTranslator(context).about,
               onPressed: () {
                 showDialog(
                   context: context,

@@ -30,4 +30,19 @@ class EnTranslator extends AppTranslator {
 
   @override
   String get okay => 'Okay';
+
+  @override
+  String get checkYourConnection => 'Check you internet connection.';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong...';
+
+  @override
+  String get reportError => 'Report';
+
+  @override
+  String get noMoviesMessage => 'Sorry, no movies in this section. 😢';
 }

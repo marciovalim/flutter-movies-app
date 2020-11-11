@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translation/flutter_translation.dart';
+import 'package:movies_app/common/translations/app_languages.dart';
+import 'package:movies_app/common/translations/app_localizations.dart';
 
-import 'package:movies_app/common/app_translations/app_languages.dart';
 import 'package:movies_app/depen_injec/get_it.dart';
-import 'package:movies_app/common/app_translations/app_localizations.dart';
 import 'package:movies_app/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:movies_app/presentation/themes/app_colors.dart';
 import 'package:movies_app/presentation/themes/text_themes.dart';

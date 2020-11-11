@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
+import 'package:movies_app/common/translations/app_languages.dart';
+import 'package:movies_app/common/translations/app_localizations.dart';
+import 'package:movies_app/common/translations/app_translator.dart';
 
-import 'package:movies_app/common/app_translations/app_languages.dart';
-import 'package:movies_app/common/app_translations/app_localizations.dart';
-import 'package:movies_app/common/app_translations/app_translator.dart';
 import 'package:movies_app/data/core/api_client.dart';
 import 'package:movies_app/data/data_sources/movies_remote_data_source.dart';
 import 'package:movies_app/data/repositories/movie_repository_impl.dart';

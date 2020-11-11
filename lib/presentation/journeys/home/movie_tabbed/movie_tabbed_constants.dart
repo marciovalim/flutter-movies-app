@@ -1,4 +1,4 @@
-import 'package:movies_app/common/app_translations/app_translator.dart';
+import 'package:movies_app/common/translations/app_translator.dart';
 import 'package:movies_app/presentation/journeys/home/movie_tabbed/tab.dart';
 
 class MovieTabs {

@@ -30,4 +30,19 @@ class PtTranslator extends AppTranslator {
 
   @override
   String get okay => 'Ok';
+
+  @override
+  String get checkYourConnection => 'Verifique sua conexão com a internet.';
+
+  @override
+  String get retry => 'Recarregar';
+
+  @override
+  String get somethingWentWrong => 'Algo deu errado...';
+
+  @override
+  String get reportError => 'Reportar';
+
+  @override
+  String get noMoviesMessage => 'Nenhum filme disponível nessa seção. 😢';
 }

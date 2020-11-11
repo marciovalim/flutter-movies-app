@@ -7,6 +7,8 @@ import 'package:movies_app/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dar
 import 'package:movies_app/presentation/journeys/drawer/drawer_widget.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_carousel_widget.dart';
 import 'package:movies_app/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
+import 'package:movies_app/presentation/widgets/app_error_widget.dart';
+import 'package:movies_app/presentation/widgets/app_progress_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -49,6 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         child: BlocBuilder<MovieCarouselBloc, MovieCarouselState>(
           builder: (_, state) {
+            if (state is MovieCarouselLoading) {
+              return AppProgressIndicator();
+            }
             if (state is MovieCarouselLoaded) {
               return Stack(
                 fit: StackFit.expand,
@@ -66,6 +71,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: const MovieTabbedWidget(),
                   ),
                 ],
+              );
+            }
+            if (state is MovieCarouselLoadError) {
+              return AppErrorWidget(
+                appErrorType: state.appErrorType,
+                retryFunction: () {
+                  _movieCarouselBloc.add(MovieCarouselLoadEvent());
+                },
               );
             }
             return const SizedBox.shrink();

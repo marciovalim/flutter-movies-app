@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/common/app_translations/app_translator.dart';
-import 'package:movies_app/depen_injec/get_it.dart';
 import 'package:responsive_size/responsive_size.dart';
 
+import 'package:movies_app/common/utils/find_translator.dart';
+import 'package:movies_app/domain/entities/movie_entity.dart';
+import 'package:movies_app/presentation/widgets/app_error_widget.dart';
 import 'package:movies_app/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
 import 'package:movies_app/presentation/journeys/home/movie_tabbed/movies_tabbed_list.dart';
 import 'package:movies_app/common/constants/size_constants.dart';
@@ -44,7 +45,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: MovieTabs.getMovieTabs(
-                  getIt.get<AppTranslator>(param1: context),
+                  Utils.findTranslator(context),
                 ).map((movieTab) {
                   return TabTitleWidget(
                     title: movieTab.title,
@@ -53,16 +54,24 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget> {
                   );
                 }).toList(),
               ),
-              if (state is MovieTabbedChanged)
-                Expanded(
-                  child: AnimatedSwitcher(
-                    duration: Duration(milliseconds: 400),
-                    child: MoviesTabbedList(
+              Builder(
+                builder: (context) {
+                  if (state is MovieTabbedChanged) {
+                    return Movietab(
                       movies: state.movies,
-                      key: ValueKey(state.currentIndex),
-                    ),
-                  ),
-                ),
+                      currentTabIndex: state.currentIndex,
+                    );
+                  }
+                  if (state is MovieTabbedLoadError) {
+                    return AppErrorWidget(
+                      appErrorType: state.appErrorType,
+                      retryFunction: () => _movieTabbedBloc
+                          .add(MovieTabbedChangeEvent(state.currentIndex)),
+                    );
+                  }
+                  return SizedBox.shrink();
+                },
+              ),
             ],
           );
         },
@@ -72,5 +81,38 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget> {
 
   void _changeTabIndex(int index) {
     _movieTabbedBloc.add(MovieTabbedChangeEvent(index));
+  }
+}
+
+class Movietab extends StatelessWidget {
+  final List<MovieEntity> movies;
+  final int currentTabIndex;
+
+  const Movietab({
+    Key key,
+    @required this.movies,
+    @required this.currentTabIndex,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return movies.length == 0
+        ? Expanded(
+            child: Center(
+              child: Text(
+                Utils.findTranslator(context).noMoviesMessage,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+            ),
+          )
+        : Expanded(
+            child: AnimatedSwitcher(
+              duration: Duration(milliseconds: 400),
+              child: MoviesTabbedList(
+                movies: movies,
+                key: ValueKey(currentTabIndex),
+              ),
+            ),
+          );
   }
 }

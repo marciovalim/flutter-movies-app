@@ -12,4 +12,9 @@ abstract class AppTranslator extends ITranslator {
   String get about;
   String get aboutDescription;
   String get okay;
+  String get somethingWentWrong;
+  String get checkYourConnection;
+  String get retry;
+  String get reportError;
+  String get noMoviesMessage;
 }

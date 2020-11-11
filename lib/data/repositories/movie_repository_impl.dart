@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 
 import 'package:movies_app/data/data_sources/movies_remote_data_source.dart';
@@ -13,41 +15,34 @@ class MoviesRepositoryImpl extends MoviesRepository {
 
   @override
   Future<Either<AppError, List<MovieModel>>> getTrending() async {
-    try {
-      final movies = await moviesDataSource.getTrending();
-      return Right(movies);
-    } on Exception {
-      return Left(AppError('Something went wrong with getTrending'));
-    }
+    return _tryGetMoviesBy(moviesDataSource.getTrending);
   }
 
   @override
   Future<Either<AppError, List<MovieEntity>>> getComingSoon() async {
-    try {
-      final movies = await moviesDataSource.getComingSoon();
-      return Right(movies);
-    } on Exception {
-      return Left(AppError('Something went wrong with getComingSoon'));
-    }
+    return _tryGetMoviesBy(moviesDataSource.getComingSoon);
   }
 
   @override
   Future<Either<AppError, List<MovieEntity>>> getPlayingNow() async {
-    try {
-      final movies = await moviesDataSource.getPlayingNow();
-      return Right(movies);
-    } on Exception {
-      return Left(AppError('Something went wrong with getPlayingNow'));
-    }
+    return _tryGetMoviesBy(moviesDataSource.getPlayingNow);
   }
 
   @override
   Future<Either<AppError, List<MovieEntity>>> getPopular() async {
+    return _tryGetMoviesBy(moviesDataSource.getPopular);
+  }
+
+  Future<Either<AppError, List<MovieModel>>> _tryGetMoviesBy(
+    Future<List<MovieModel>> Function() getMovies,
+  ) async {
     try {
-      final movies = await moviesDataSource.getPopular();
+      final movies = await getMovies();
       return Right(movies);
+    } on SocketException {
+      return Left(AppError(AppErrorType.Network));
     } on Exception {
-      return Left(AppError('Something went wrong with getPopular'));
+      return Left(AppError(AppErrorType.Api));
     }
   }
 }
