@@ -23,7 +23,14 @@ class TabTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
+      behavior: HitTestBehavior.translucent,
       child: Container(
+        margin: EdgeInsets.only(
+          top: Sizes.s4.h,
+          bottom: Sizes.s6.h,
+          left: Sizes.s32.w,
+          right: Sizes.s32.w,
+        ),
         child: Text(
           title,
           maxLines: 1,

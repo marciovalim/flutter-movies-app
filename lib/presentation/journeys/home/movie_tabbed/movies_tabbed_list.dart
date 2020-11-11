@@ -16,8 +16,8 @@ class MoviesTabbedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: Sizes.s6.h,
+      padding: EdgeInsets.only(
+        bottom: Sizes.s6.h,
       ),
       child: ListView.separated(
         shrinkWrap: true,
