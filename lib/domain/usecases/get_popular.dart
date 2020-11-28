@@ -6,9 +6,7 @@ import 'package:movies_app/domain/repositories/movie_repository.dart';
 import 'package:movies_app/domain/usecases/usecase.dart';
 
 class GetPopular extends Usecase<List<MovieEntity>, NoParams> {
-  final MoviesRepository movieRepository;
-
-  GetPopular(this.movieRepository);
+  GetPopular(MoviesRepository movieRepository) : super(movieRepository);
 
   Future<Either<AppError, List<MovieEntity>>> call(NoParams noParams) async {
     return await movieRepository.getPopular();

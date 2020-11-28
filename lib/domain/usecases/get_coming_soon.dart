@@ -6,9 +6,7 @@ import 'package:movies_app/domain/repositories/movie_repository.dart';
 import 'package:movies_app/domain/usecases/usecase.dart';
 
 class GetComingSoon extends Usecase<List<MovieEntity>, NoParams> {
-  final MoviesRepository movieRepository;
-
-  GetComingSoon(this.movieRepository);
+  GetComingSoon(MoviesRepository movieRepository) : super(movieRepository);
 
   @override
   Future<Either<AppError, List<MovieEntity>>> call(NoParams noParams) async {
