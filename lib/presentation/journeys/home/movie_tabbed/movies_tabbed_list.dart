@@ -28,6 +28,7 @@ class MoviesTabbedList extends StatelessWidget {
         },
         itemBuilder: (_, index) {
           return MovieTabbedCardWidget(
+            movieId: movies[index].id,
             title: movies[index].title,
             posterPath: movies[index].posterPath,
           );
