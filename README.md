@@ -3,7 +3,7 @@
 ## What is it about?
 
 An application made with Flutter to practice the principles of Clean Architecture. <br>
-Even being focused on architeture, the project also has a beatiful UI.
+Even being focused on architecture, the project also has a beautiful UI.
 
 <p align="left">
   <img width="180" src="./preview/screenshots/home_screen.jpg" alt="Home Screen" hspace="20"/>
