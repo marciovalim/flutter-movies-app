@@ -1,7 +1,5 @@
 # Flutter Movies App
 
-## What is it about?
-
 An application made with Flutter to practice the principles of Clean Architecture. <br>
 Even being focused on architecture, the project also has a beautiful UI.
 
