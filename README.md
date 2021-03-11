@@ -33,3 +33,9 @@ flutter run
 ## 📝 License
 
 This project is under MIT License. See <a href="https://github.com/marciovalim/flutter-movies-app/blob/master/LICENSE">LICENSE</a> for more details.
+
+## Thanks to
+
+- [unclebob](https://github.com/unclebob) (For the infamous Clean Architecture)
+- [techieblossom](https://github.com/TechieBlossom) (For the awesome youtube tutorials)
+- Authors of all the packages I have used, who made our lives easier.
