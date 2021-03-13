@@ -5,7 +5,7 @@ class MoviesResponseModel {
 
   MoviesResponseModel.fromJson(Map<String, dynamic> decodedJson) {
     if (decodedJson['results'] != null) {
-      movies = List<MovieModel>();
+      movies = <MovieModel>[];
       decodedJson['results'].forEach((result) {
         movies.add(MovieModel.fromJson(result));
       });

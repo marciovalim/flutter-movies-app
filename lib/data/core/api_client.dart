@@ -10,7 +10,8 @@ class ApiClient {
 
   dynamic get(String middlePath) async {
     final response = await _client.get(
-      '${ApiConstants.BASE_URL}$middlePath?api_key=${ApiConstants.KEY}',
+      Uri.parse(
+          '${ApiConstants.BASE_URL}$middlePath?api_key=${ApiConstants.KEY}'),
       headers: {
         'Content-Type': 'application/json',
       },

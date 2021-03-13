@@ -62,7 +62,7 @@ class MovieDetailsModel extends MovieDetailsEntity {
 
   factory MovieDetailsModel.fromJson(Map<String, dynamic> json) {
     List<Genres> _genres(Map<String, dynamic> json) {
-      final genres = List<Genres>();
+      final genres = <Genres>[];
       if (json['genres'] != null) {
         json['genres'].forEach((v) {
           genres.add(new Genres.fromJson(v));
@@ -72,7 +72,7 @@ class MovieDetailsModel extends MovieDetailsEntity {
     }
 
     List<SpokenLanguages> _spokenLanguges(Map<String, dynamic> json) {
-      final genres = List<SpokenLanguages>();
+      final genres = <SpokenLanguages>[];
       if (json['spoken_languages'] != null) {
         json['spoken_languages'].forEach((v) {
           genres.add(SpokenLanguages.fromJson(v));

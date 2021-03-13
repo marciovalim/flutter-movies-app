@@ -72,7 +72,7 @@ class DrawerWidget extends StatelessWidget {
               onPressed: () {
                 showDialog(
                   context: context,
-                  child: AppAboutDialog(),
+                  builder: (_) => AppAboutDialog(),
                 );
               },
             ),
